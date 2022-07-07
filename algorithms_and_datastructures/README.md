@@ -1,28 +1,29 @@
 
-I highly suggest using [neetcode.io](https://neetcode.io/) to study these topics!!
+I highly suggest using [neetcode.io](https://neetcode.io/) to study these topics!
 
 ## Must Know Topics
-1. Logarithm (Complexity Analysis)
-2. Graph Traversals (BFS & DFS)
-3. Binary Search
-4. Sliding Window 
-5. Recursion
-6. 2 Algorithms (Inverting a binary tree & Reverse a Linked List)
-7. Suffix Trees (Trie)
-8. Heaps
-9. Dynamic Programming
-10. Sorting Algorithms (Quick & Merge)
+1. Big O Notation
+2. Logarithm (Complexity Analysis)
+3. Graph Traversals (BFS & DFS)
+4. Binary Search
+5. Sliding Window 
+6. Recursion
+7. 2 Algorithms (Inverting a binary tree & Reverse a Linked List)
+8. Prefix Trees (Trie)
+9. Heaps
+10. 2 Pointers Strategies
+11. Sorting Algorithms (Quick & Merge)
 
 reference: https://youtu.be/Ge0Udbws1kc
 
 ## Videos
 
-Neetcode top 6: https://youtu.be/ft0owvS5tQA
-Sorting Algorithms: https://youtu.be/qk7b4-iyCJ4
-DP: https://youtu.be/vYquumk4nWw
-bfs/dfs: https://youtu.be/hTM3phVI6YQ
-Tries (prefix trees): https://youtu.be/YG6iX28hmd0
-Quicksort: https://youtu.be/7h1s2SojIRw
+Neetcode top 6: https://youtu.be/ft0owvS5tQA  
+Sorting Algorithms: https://youtu.be/qk7b4-iyCJ4  
+DP: https://youtu.be/vYquumk4nWw  
+bfs/dfs: https://youtu.be/hTM3phVI6YQ  
+Tries (prefix trees): https://youtu.be/YG6iX28hmd0  
+Quicksort: https://youtu.be/7h1s2SojIRw  
 
 ## Books
 
@@ -31,8 +32,8 @@ Quicksort: https://youtu.be/7h1s2SojIRw
 
 ## Various Resources
 
-sets vs lists performance: https://stackoverflow.com/a/17945009/11912032
-python dequeue: https://www.geeksforgeeks.org/deque-in-python/
+sets vs lists performance: https://stackoverflow.com/a/17945009/11912032  
+python dequeue: https://www.geeksforgeeks.org/deque-in-python/  
 
 ## Tips for the interview
 
@@ -43,7 +44,7 @@ python dequeue: https://www.geeksforgeeks.org/deque-in-python/
 4. Give examples of the space and time complexity to see what the interviewer thinks about it
 
 ### Optimisations
-1. Sorting (merge is good for big datasets, quick for small ones)
+1. Sorting
 2. Binary search
 3. Hash maps
 4. Two pointers
@@ -51,7 +52,7 @@ python dequeue: https://www.geeksforgeeks.org/deque-in-python/
 6. Heaps
 7. Iterative (to save on space complexity)
 
-### Quick vs Merge
+### Quick vs Merge Sorting
 
-Merge is only good for large datasets (worst case is stil n*logn), but it uses extra space.
-Quick is worse in general (worst case is n^2) but better in most cases, it uses no extra space.
+Merge is good for large datasets, it has the worst case being n*logn, but it uses extra space.  
+Quick is good for small datasets but it has a terrible worst case of n^2, it uses no extra space.  

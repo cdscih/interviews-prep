@@ -1,38 +1,45 @@
 
-I highly suggest reading the book called "Grokking the System Design Interview" or use this [repo's](https://github.com/sharanyaa/grok_sdi_educative) pdf.
+I highly suggest reading the book called "Grokking the System Design Interview" or this [repo's](https://github.com/sharanyaa/grok_sdi_educative) NOTEs.
 
-## Must Know Topics
-* apis design (both rest and graphql)
+# Table of Contents
+1. [Must Know Topics](#must-know)
+2. [Videos](#videos)
+3. [Books](#books)
+4. [Interview Tips](#interview-tips)
+5. [Topics](#topics)
+
+## Must Know Topics <a id="must-know"></a>
+* apis design
 * sql vs nosql
-* caching system (position, policies, write strategies)
+* indexes
+* caching (location, policies, write strategies)
 * load balancing
 * tcp, http, polling, web sockets
+* cdn
+* cap theorem
+* client-server vs p2p 
 * sharding & partitioning
 * single point of failure
-* indexes
-* cdn
-* client-server vs p2p 
-* cap theorem
 
-## Videos
+## Videos <a id="videos"></a>
+ 
+Caching: https://youtu.be/U3RkDLtS7uY  
+Tinder: https://youtu.be/tndzLznxq40  
+ELK: https://youtu.be/ZP0NmfyfsoM  
+NoSQL: https://youtu.be/0buKQHokLK8  
+p2p: https://youtu.be/w2u4eN_WWvc  
+redis:  https://youtu.be/OqCK95AS-YE  
+db schema definition tips: https://youtu.be/zBZEz1vZdIQ  
+7 db paradigm: https://youtu.be/W2Z7fbCLSTw  
+extremely good top tips: https://youtu.be/-m5cMzm9R-s  
+techlead top 7: https://youtu.be/REB_eGHK_P4  
 
-* Caching: https://youtu.be/U3RkDLtS7uY 
-* Tinder: https://youtu.be/tndzLznxq40 
-* ELK: https://youtu.be/ZP0NmfyfsoM 
-* NoSQL: https://youtu.be/0buKQHokLK8 
-* p2p: https://youtu.be/w2u4eN_WWvc 
-* redis:  https://youtu.be/OqCK95AS-YE 
-* db schema definition tips: https://youtu.be/zBZEz1vZdIQ 
-* 7 db paradigm: https://youtu.be/W2Z7fbCLSTw 
-* extremely good top tips: https://youtu.be/-m5cMzm9R-s 
-* techlead top 7: https://youtu.be/REB_eGHK_P4 
-
-## Books
+## Books <a id="books"></a>
 
 * "Grokking the System Design Interview"
 * "SystemExpert"
 
-## Tips for the interview
+## Interview Tips <a id="interview-tips"></a>
 
 ### General
 1. Make sure all the requirements are clear.
@@ -48,15 +55,14 @@ I highly suggest reading the book called "Grokking the System Design Interview" 
 * sql 
 * keyvalue stores (redis, memcached, cassandra)
 * text search (elasticsearch)
-* time series opentsdb from tracking (like prometheus or influxdb) good for appending data and read based on timestamps
-* columnar db (cassandra, hbase)
+* time series opentsdb from tracking (like prometheus or influxdb) good to read based on timestamps
+* columnar db (cassandra, hbase) good for appending data
 
-note: this [video](https://youtu.be/W2Z7fbCLSTw) from [@codedio](https://github.com/codediodeio) is extremely helpful about this topic
+NOTE: This [video](https://youtu.be/W2Z7fbCLSTw) from [@codedio](https://github.com/codediodeio) is extremely helpful about this topic
 
+## Topics <a id="topics"></a>
 
-## Topics
-
-### CDN
+### CDN 
 
 They are useful mainly to reduce latency and excessive load on the servers.
 
@@ -92,7 +98,7 @@ Options to implement load balancing:
 * nginx (high flexibility)
 * cluster of dns (low flexibility)
 
-Most used routing strategies:
+Most used distribution strategies:
 * random
 * round robin
 * load on the most free
@@ -119,7 +125,7 @@ It's always best not to make endpoints "magic", like "/doStuff". You want to hav
 
 Caching is almost always a good idea because it improves performance by a huge amount and it often doesn't cost much both development and cost wise.
 
-#### Position
+#### Location
 
 You can choose to either put the cache in memory, perhaps with the clients or servers themselves, or have it be an independent entity.
 
@@ -153,6 +159,13 @@ The way you want to choose the indexes of your dbs is by looking at your most co
 
 The difference between clustered and non clustered indexes is that clustered indexes are linked to the real data, non-clustered only reference the real data so they can be sorted, and filtered, in a different way than the real data.
 
+### DBs Storage Scaling (sharding)
+
+To scale the capacity/storage of dbs you either want to parition the tables in sub tables each having a subset of the original columns, which is a vertical type of scaling, or each having a subset of rows, which would be an horizontal type of scaling.
+
+The way you would partition horizontally a table is by taking a column which stores some sort of ID, like user ids or locations ids, hash it, then divide the load through doing a mod of the result of the hash.
+
+NOTE: Using a single hash function will make you have issues once you need to add more capacity to the db. The way you could solve that is by using a partion to store inside other N partitions, like recursive calls, or by using [Consisten Hashing](https://youtu.be/zaRkONvyGr8).
 
 ### DBs Reads Scaling
 
@@ -163,15 +176,6 @@ After the write, the slaves will receive updates asap.
 If the master db goes down, one of the slaves takes its place and creates a new slave.
 
 NOTE: The more slaves you have the less consistent your system will be.
-
-### DBs Storage Scaling (sharding)
-
-To scale the capacity/storage of dbs you either want to parition the tables in sub tables each having a subset of the original columns, which is a vertical type of scaling, or each having a subset of rows, which would be an horizontal type of scaling.
-
-The way you would partition horizontally a table is by taking a column which stores some sort of ID, like user ids or locations ids, hash it, then divide the load through doing a mod of the result of the hash.
-
-NOTE: Using a single hash function will make you have issues once you need to add more capacity to the db. The way you could solve that is by using a partion to store inside other N partitions, like recursive calls, or by using [Consisten Hashing](https://youtu.be/zaRkONvyGr8).
-
 
 ### DBs Writes Scaling
 
@@ -195,4 +199,4 @@ You can divide the task to be done in general sub tasks and assign each to a wor
 
 Normal HTTP requests are a one-way type of connection, where the server can't independetly decide to push messages/requests to the client.
 
-In situations like messaging apps, or where frequent exchanges between client and server are needed, you might want to consider using Web Sockets which use the TCP protocol therefore allowing the server to independetly communicate with the client.
+In situations like messaging apps, or where frequent exchanges between client and server are needed, you might want to consider using Web Sockets, which use the TCP protocol, allowing the server to independetly communicate with the client.
