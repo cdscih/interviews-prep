@@ -1,14 +1,7 @@
 
 I highly suggest reading the book called "Grokking the System Design Interview" or this [repo's](https://github.com/sharanyaa/grok_sdi_educative) NOTEs.
 
-# Table of Contents
-1. [Must Know Topics](#must-know)
-2. [Videos](#videos)
-3. [Books](#books)
-4. [Interview Tips](#interview-tips)
-5. [Topics](#topics)
-
-## Must Know Topics <a id="must-know"></a>
+## Must Know Topics
 * apis design
 * sql vs nosql
 * indexes
@@ -21,7 +14,7 @@ I highly suggest reading the book called "Grokking the System Design Interview" 
 * sharding & partitioning
 * single point of failure
 
-## Videos <a id="videos"></a>
+## Videos
  
 Caching: https://youtu.be/U3RkDLtS7uY  
 Tinder: https://youtu.be/tndzLznxq40  
@@ -34,12 +27,12 @@ db schema definition tips: https://youtu.be/zBZEz1vZdIQ
 extremely good top tips: https://youtu.be/-m5cMzm9R-s  
 techlead top 7: https://youtu.be/REB_eGHK_P4  
 
-## Books <a id="books"></a>
+## Books  
 
 * "Grokking the System Design Interview"
 * "SystemExpert"
 
-## Interview Tips <a id="interview-tips"></a>
+## Interview Tips
 
 ### General
 1. Make sure all the requirements are clear.
@@ -60,7 +53,7 @@ techlead top 7: https://youtu.be/REB_eGHK_P4
 
 NOTE: This [video](https://youtu.be/W2Z7fbCLSTw) from [@codedio](https://github.com/codediodeio) is extremely helpful about this topic
 
-## Topics <a id="topics"></a>
+## Topics  
 
 ### CDN 
 

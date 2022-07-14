@@ -16,6 +16,8 @@ I highly suggest using [neetcode.io](https://neetcode.io/) to study these topics
 
 reference: https://youtu.be/Ge0Udbws1kc
 
+NOTE: To understand how big of a difference `logn` complexity makes compared to `n` run the `binary_search.py` file.
+
 ## Videos
 
 Neetcode top 6: https://youtu.be/ft0owvS5tQA  
@@ -41,7 +43,8 @@ python dequeue: https://www.geeksforgeeks.org/deque-in-python/
 1. Be SURE to understand the issue well
 2. Break everything down into smaller steps and solve them 1 by 1
 3. Try brute force giving examples or drawing
-4. Give examples of the space and time complexity to see what the interviewer thinks about it
+4. Give examples of the space and time complexity  
+5. Check if you're assumptions are aligned with the interviewer's  
 
 ### Optimisations
 1. Sorting
