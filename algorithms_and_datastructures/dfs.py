@@ -31,6 +31,20 @@ def i_dfs(root: Node):
             stack.append(node.left)
     return res
 
+def preorder_dfs(root: Node):
+    tpl = ""
+    
+    stack = [root]
+    while stack:
+        node = stack.pop()
+        if not node:
+            continue
+        tpl += str(node.val) + " "
+        stack.append(node.right)
+        stack.append(node.left)
+    
+    return tpl
+
 
 tree = Node(5)
 tree.left = Node(15)
@@ -45,3 +59,4 @@ tree.left.left.left = Node(183)
 r_dfs(tree)
 print(r_dfs_res)
 print(i_dfs(tree))
+print(preorder_dfs(tree))
