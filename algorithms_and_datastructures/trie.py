@@ -1,56 +1,60 @@
-class TrieNode:
+from collections import defaultdict
+
+class Trie:
+    """
+    Implement a trie with insert, search, and startsWith methods.
+    """
     def __init__(self):
-        self.paths = {}
-        self.is_word = False
+        self.root = defaultdict()
 
-    def __str__(self):
-        # TODO: fix the addition case
-        tpl = ""
-        stack = [self]
-        while stack:
-            node = stack.pop()
-            for char, node in node.paths.items():
-                tpl += f" ({char}) "
-                stack.append(node)
-        return tpl
+    # @param {string} word
+    # @return {void}
+    # Inserts a word into the trie.
+    def insert(self, word):
+        current = self.root
+        for letter in word:
+            current = current.setdefault(letter, {})
+        current.setdefault("_end")
 
+    # @param {string} word
+    # @return {boolean}
+    # Returns if the word is in the trie.
+    def search(self, word):
+        current = self.root
+        for letter in word:
+            if letter not in current:
+                return False
+            current = current[letter]
+        if "_end" in current:
+            return True
+        return False
 
-def add_to_trie(head: TrieNode, word: str):
-    cur = head
-    for char in word:
-        if char not in cur.paths:
-            cur.paths[char] = TrieNode()
-        cur = cur.paths[char]
-    cur.is_word = True
-
+    # @param {string} prefix
+    # @return {boolean}
+    # Returns if there is any word in the trie
+    # that starts with the given prefix.
+    def startsWith(self, prefix):
+        current = self.root
+        for letter in prefix:
+            if letter not in current:
+                return False
+            current = current[letter]
+        return True
 
 def create_trie(words: list[str]):
-    head = TrieNode()
+    head = Trie()
     for word in words:
-        add_to_trie(head, word)
+        head.insert(word)
     return head
 
-
-def in_trie(head: TrieNode, word: str):
-    trie_cur = head
-    for i, _ in enumerate(word):
-        if word[i] not in trie_cur.paths:
-            return False
-        trie_cur = trie_cur.paths[word[i]]
-    return trie_cur.is_word
-
-
 trie = create_trie(["ciao", "ciaoo", "ciaopp", "bai"])
-print(trie)
 
-print("\"ci\" in trie:", in_trie(trie, "ci"))
-print("\"ciao\" in trie:", in_trie(trie, "ciao"))
-print("\"ciaoo\" in trie:", in_trie(trie, "ciaoo"))
-print("\"ciaop\" in trie:", in_trie(trie, "ciaop"))
-print("\"cia\" in trie:", in_trie(trie, "cia"))
-print("\"bai\" in trie:", in_trie(trie, "bai"))
+print("\"ci\" in trie:", trie.search( "ci"))
+print("\"ciao\" in trie:", trie.search( "ciao"))
+print("\"ciaoo\" in trie:", trie.search( "ciaoo"))
+print("\"ciaop\" in trie:", trie.search( "ciaop"))
+print("\"cia\" in trie:", trie.search( "cia"))
+print("\"bai\" in trie:", trie.search( "bai"))
 
-add_to_trie(trie, "ci")
-print("\"ci\" in trie:", in_trie(trie, "ci"))
-
-print(trie)
+trie.insert("ci")
+print("\"ci\" in trie:", trie.search( "ci"))
